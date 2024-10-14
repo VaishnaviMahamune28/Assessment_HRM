@@ -1,4 +1,5 @@
 import pytest
+import config
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from pages.login_page import LoginPage
@@ -35,9 +36,10 @@ class TestAddUser:
         try:
             self.add_user_page.search_user_inPIM('Amelia')
         except:
-            self.add_user_page.add_user(employee_firstname='amph', employe_lastname='phil', emp_id='989060')
+            self.add_user_page.add_user(employee_firstname=config.employee_firstname, 
+                            employe_lastname=config.employee_lastname, emp_id=config.emp_id)
             self.add_user_page.toogle_on()
-            self.add_user_page.add_details("amphphil")
+            self.add_user_page.add_details(usrname=config.usrname)
 
 
         user_id_logo = self.driver.find_element(By.CLASS_NAME, 'employee-image')
